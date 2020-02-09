@@ -123,7 +123,7 @@ class App extends React.Component {
                   </select>
                 </div>
 
-                <div class="col-2">
+                <div class="col-2" style={{"margin":"1px"}}>
                   <select class="repeat-el no-side-borders col-12"
                   >
                     <option value="" disabled selected>Operator</option>
@@ -170,14 +170,14 @@ class App extends React.Component {
             </div>
             <div style={{flex:0.9}}>
               <div class="fixed-item flex items-center">
-                <div class="col-4">
-                  <select class="repeat-el col-12 no-right-border" >
+                <div class="col-4" style={{"margin":"1px"}}>
+                  <select class="repeat-el col-12 no-right-border" style={{background:"white"}}>
                     <option value="Campaign Name" selected>Campaign Name</option>
                     <option value="Ad Set Name">Ad Set Name</option>
                     <option value="Ad Name">Ad Name</option>
                   </select>
                 </div>
-                <div class="col-3">
+                <div class="col-3" style={{"margin":"1px"}}>
                   <select class="repeat-el no-side-borders col-12"
                   >
                     <option value="" disabled selected>Operator</option>
@@ -186,7 +186,7 @@ class App extends React.Component {
                     <option value="does not contain">Does not contain</option>
                   </select>
                 </div>
-                <div class="col-4">
+                <div class="col-4" style={{"margin":"1px"}}>
                   <input
                     class="col-12 repeat-el "
                     type="text"
@@ -199,7 +199,7 @@ class App extends React.Component {
               </div>
             
               <div class="repeat-item flex items-center">
-                <div class="col-4">
+                <div class="col-4" style={{"margin":"1px"}}>
                   <select class="repeat-el col-12 no-right-border" >
                     <option value="" disabled selected>Metric</option>
                     <option value="Impressions">Impressions</option>
@@ -221,7 +221,7 @@ class App extends React.Component {
                   </select>
                 </div>
 
-                <div class="col-3">
+                <div class="col-3" style={{"margin":"1px"}}>
                   <select
                     class="repeat-el no-right-border col-12" >
                     <option value="" disabled selected>Lookback Window</option>
@@ -244,7 +244,7 @@ class App extends React.Component {
                   </select>
                 </div>
 
-                <div class="col-2">
+                <div class="col-2" style={{"margin":"1px"}}>
                   <select class="repeat-el no-side-borders col-12"
                   >
                     <option value="" disabled selected>Operator</option>
@@ -256,7 +256,7 @@ class App extends React.Component {
                   </select>
                 </div>
 
-                <div class="col-2">
+                <div class="col-2" style={{"margin":"1px"}}>
                   <input
                     class="col-12 repeat-el "
                     type="text"
@@ -267,7 +267,7 @@ class App extends React.Component {
                 </div>
               </div>
               <div>
-                <div class="col-4">
+                <div class="col-4" style={{"margin":"1px"}}>
                   <input
                     placeholder="Rule Name"
                     class="col-12 repeat-el "
