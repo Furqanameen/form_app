@@ -1,8 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import './basscss.css';
-import './style.css';
+import './assets/App.css';
+// import './basscss.css';
+import './assets/basscss.css'
+// import './basscss.css';
+import './assets/style.css';
 
 class App extends React.Component {
   
@@ -160,9 +161,9 @@ class App extends React.Component {
       this.state.container_array.map((data)  => {
         return(
           <div  style={{display: "flex","padding-top": "40px"}}>
-            <div style={{display: "flex",width: "1.5%",background:"#1b95e0","margin-right": "20px",flexDirection: "column"}}>
+            <div style={{display: "flex",width: "1.5%",background:"#1b95e0","margin-right": "6px",flexDirection: "column"}}>
               <div style={{display:"flex",height: "70%",alignItems:'flex-end',justifyContent: 'center'}}>
-                <h5 style={{color: "white",transform: "rotate(270deg)"}}>CM</h5>
+                <h6 style={{color: "white",transform: "rotate(270deg)"}}>CM</h6>
               </div>
               <div style={{display:"flex",height: "30%",alignItems:'flex-end',justifyContent: 'center'}}>
                 <i className="fa fa-plus-circle" style={{color: "white"}} onClick={(e) => this.add_row_press(data.id)}></i>
@@ -170,7 +171,7 @@ class App extends React.Component {
             </div>
             <div style={{flex:0.9}}>
               <div class="fixed-item flex items-center">
-                <div class="col-4" style={{"margin":"1px"}}>
+                <div class="col-4" style={{"margin":"0px"}}>
                   <select class="repeat-el col-12 no-right-border" style={{background:"white"}}>
                     <option value="Campaign Name" selected>Campaign Name</option>
                     <option value="Ad Set Name">Ad Set Name</option>
@@ -186,7 +187,7 @@ class App extends React.Component {
                     <option value="does not contain">Does not contain</option>
                   </select>
                 </div>
-                <div class="col-4" style={{"margin":"1px"}}>
+                <div class="col-4" style={{"margin":"0px"}}>
                   <input
                     class="col-12 repeat-el "
                     type="text"
@@ -199,7 +200,7 @@ class App extends React.Component {
               </div>
             
               <div class="repeat-item flex items-center">
-                <div class="col-4" style={{"margin":"1px"}}>
+                <div class="col-4" style={{"margin":"0px"}}>
                   <select class="repeat-el col-12 no-right-border" >
                     <option value="" disabled selected>Metric</option>
                     <option value="Impressions">Impressions</option>
@@ -244,7 +245,7 @@ class App extends React.Component {
                   </select>
                 </div>
 
-                <div class="col-2" style={{"margin":"1px"}}>
+                <div class="col-2" style={{"margin":"0px"}}>
                   <select class="repeat-el no-side-borders col-12"
                   >
                     <option value="" disabled selected>Operator</option>
@@ -323,7 +324,7 @@ class App extends React.Component {
                 <div class="repeat-item col-12" >
                   <div id="base_condition_group_1" class="repeat-section flex items-center" >
                     <div class="repeat-items flex-auto">
-                      <div style={{"text-align": 'right',"marginBottom": "20px","padding-right": "300px"}} onClick={this.trigger_press}>Trigger/Action</div>
+                      <div style={{"text-align": 'right',"marginBottom": "20px","padding-right": "30%"}} onClick={this.trigger_press}>Trigger/Action</div>
                       {
                         this.render_container()
                       }  
