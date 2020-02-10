@@ -15,7 +15,7 @@ class App extends React.Component {
       container_array:  [
                           {
                             id:1,
-                            status: "CM",
+                            status: "AND",
                             first_row: {fi: "a",se: 'b',th: "c"},
                             second_row:[],
                             rule_name:'',
@@ -48,7 +48,7 @@ class App extends React.Component {
 
   trigger_press = () =>{
     var temp_array = this.state.container_array
-    temp_array.push({id: this.state.container_array.length+1,status: "CM",first_row: {},second_row:[],rule_name:''})
+    temp_array.push({id: this.state.container_array.length+1,status: "AND",first_row: {},second_row:[],rule_name:''})
     this.setState({container_array: temp_array})
   }
 
@@ -75,9 +75,7 @@ class App extends React.Component {
 
   press_blue_btn = (container_id,status) =>{
     var temp_array = this.state.container_array
-    if (status === "CM"){
-      temp_array[container_id-1].status = "AND"
-    }else if (status === "AND"){
+    if (status === "AND"){
       temp_array[container_id-1].status = "OR"
     }else{
       temp_array[container_id-1].status = "AND"
