@@ -15,6 +15,7 @@ class App extends React.Component {
       container_array:  [
                           {
                             id:1,
+                            status: "CM",
                             first_row: {fi: "a",se: 'b',th: "c"},
                             second_row:[],
                             rule_name:'',
@@ -47,7 +48,7 @@ class App extends React.Component {
 
   trigger_press = () =>{
     var temp_array = this.state.container_array
-    temp_array.push({id: this.state.container_array.length+1,first_row: {},second_row:[],rule_name:''})
+    temp_array.push({id: this.state.container_array.length+1,status: "CM",first_row: {},second_row:[],rule_name:''})
     this.setState({container_array: temp_array})
   }
 
@@ -70,6 +71,19 @@ class App extends React.Component {
       temp_array[container_id-1].second_row.push({id: id,sfi:"",sse: ""})
       this.setState({container_array: temp_array})
     }
+  }
+
+  press_blue_btn = (container_id,status) =>{
+    var temp_array = this.state.container_array
+    if (status === "CM"){
+      temp_array[container_id-1].status = "AND"
+    }else if (status === "AND"){
+      temp_array[container_id-1].status = "OR"
+    }else{
+      temp_array[container_id-1].status = "AND"
+    }
+    this.setState({container_array: temp_array})
+    
   }
 
   render_second_row = (second_row,container_id) =>{
@@ -163,7 +177,7 @@ class App extends React.Component {
           <div  style={{display: "flex","padding-top": "40px"}}>
             <div style={{display: "flex",width: "1.5%",background:"#1b95e0","margin-right": "6px",flexDirection: "column"}}>
               <div style={{display:"flex",height: "70%",alignItems:'flex-end',justifyContent: 'center'}}>
-                <h6 style={{color: "white",transform: "rotate(270deg)"}}>CM</h6>
+                <h6 style={{color: "white",transform: "rotate(270deg)"}} onClick={(e) => this.press_blue_btn(data.id,data.status)}>{data.status}</h6>
               </div>
               <div style={{display:"flex",height: "30%",alignItems:'flex-end',justifyContent: 'center'}}>
                 <i className="fa fa-plus-circle" style={{color: "white"}} onClick={(e) => this.add_row_press(data.id)}></i>
