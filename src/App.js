@@ -11,6 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       playText: "Play",
+      form_type: "Simple",
       playIcon: true,
       container_array:  [
                           {
@@ -170,152 +171,277 @@ class App extends React.Component {
     }
   }
 
-  render_container = () =>{
+  render_simple_container = () =>{
     return(
       this.state.container_array.map((data)  => {
         return(
-          <div  style={{display: "flex","padding-top": "40px"}}>
-            <div style={{display: "flex",width: "1.5%",background:"#1b95e0","margin-right": "6px",flexDirection: "column"}}>
-              <div style={{display:"flex",height: "70%",alignItems:'flex-end',justifyContent: 'center'}}>
-                <h6 style={{color: "white",transform: "rotate(270deg)"}} onClick={(e) => this.press_blue_btn(data.id,data.status)}>{data.status}</h6>
-              </div>
-              <div style={{display:"flex",height: "30%",alignItems:'flex-end',justifyContent: 'center'}}>
-                <i className="fa fa-plus-circle" style={{color: "white"}} onClick={(e) => this.add_row_press(data.id)}></i>
-              </div>
-            </div>
-            <div style={{flex:0.9}}>
-              <div class="fixed-item flex items-center">
-                <div class="col-4" style={{"margin":"0px"}}>
-                  <select class="repeat-el col-12 no-right-border" style={{background:"white"}}>
-                    <option value="Campaign Name" selected>Campaign Name</option>
-                    <option value="Ad Set Name">Ad Set Name</option>
-                    <option value="Ad Name">Ad Name</option>
-                  </select>
+          <div id="base_condition_group_1" class="repeat-section flex items-center" >
+            <div class="repeat-items flex-auto">
+              <div  style={{display: "flex","padding-top": "40px"}}>
+                <div style={{display: "flex",width: "1.5%",background:"#1b95e0","margin-right": "6px",flexDirection: "column"}}>
+                  <div style={{display:"flex",height: "70%",alignItems:'flex-end',justifyContent: 'center'}}>
+                    <h6 style={{color: "white",transform: "rotate(270deg)"}} onClick={(e) => this.press_blue_btn(data.id,data.status)}>{data.status}</h6>
+                  </div>
+                  <div style={{display:"flex",height: "30%",alignItems:'flex-end',justifyContent: 'center'}}>
+                    <i className="fa fa-plus-circle" style={{color: "white"}} onClick={(e) => this.add_row_press(data.id)}></i>
+                  </div>
                 </div>
-                <div class="col-3" style={{"margin":"1px"}}>
-                  <select class="repeat-el no-side-borders col-12"
-                  >
-                    <option value="" disabled selected>Operator</option>
-                    <option value="equals">Equals</option>
-                    <option value="contains">Contains</option>
-                    <option value="does not contain">Does not contain</option>
-                  </select>
-                </div>
-                <div class="col-4" style={{"margin":"0px"}}>
-                  <input
-                    class="col-12 repeat-el "
-                    type="text"
-                    size="10"
-                    maxlength="256"
-                    style={{"font-size": "12pt"}}
-                  />
-                </div>
-                <div class="col4"></div>
-              </div>
-            
-              <div class="repeat-item flex items-center">
-                <div class="col-4" style={{"margin":"0px"}}>
-                  <select class="repeat-el col-12 no-right-border" >
-                    <option value="" disabled selected>Metric</option>
-                    <option value="Impressions">Impressions</option>
-                    <option value="Clicks (all)">Clicks (all)</option>
-                    <option value="Link clicks">Link clicks</option>
-                    <option value="Cost">Cost</option>
-                    <option value="CPC (all)">CPC (all)</option>
-                    <option value="CPC (cost per link click)">CPC (Cost Per Link Click)</option>
-                    <option value="CTR (link click-through rate)">CTR (Link Click-Through Rate)</option>
-                    <option value="Conversion value of purchase on Facebook">Conversion value of purchase on Facebook</option>
-                    <option value="Website purchases">Website purchases</option>
-                    <option value="Website purchases CVR">Website purchases CVR</option>
-                    <option value="Cost per website purchase">Cost per website purchase</option>
-                    <option value="Website Purchase ROAS">Website Purchase ROAS</option>
-                    <option value="Website adds to cart">Website adds to cart</option>
-                    <option value="Website adds to cart CVR">Website adds to cart CVR</option>
-                    <option value="Website Lead">Website Lead</option>
-                    <option value="Website Lead CVR">Website Lead CVR</option>
-                  </select>
-                </div>
+                <div style={{flex:0.9}}>
+                  <div class="fixed-item flex items-center">
+                    <div class="col-4" style={{"margin":"0px"}}>
+                      <select class="repeat-el col-12 no-right-border" style={{background:"white"}}>
+                        <option value="Campaign Name" selected>Campaign Name</option>
+                        <option value="Ad Set Name">Ad Set Name</option>
+                        <option value="Ad Name">Ad Name</option>
+                      </select>
+                    </div>
+                    <div class="col-3" style={{"margin":"1px"}}>
+                      <select class="repeat-el no-side-borders col-12"
+                      >
+                        <option value="" disabled selected>Operator</option>
+                        <option value="equals">Equals</option>
+                        <option value="contains">Contains</option>
+                        <option value="does not contain">Does not contain</option>
+                      </select>
+                    </div>
+                    <div class="col-4" style={{"margin":"0px"}}>
+                      <input
+                        class="col-12 repeat-el "
+                        type="text"
+                        size="10"
+                        maxlength="256"
+                        style={{"font-size": "12pt"}}
+                      />
+                    </div>
+                    <div class="col4"></div>
+                  </div>
+                
+                  <div class="repeat-item flex items-center">
+                    <div class="col-4" style={{"margin":"0px"}}>
+                      <select class="repeat-el col-12 no-right-border" >
+                        <option value="" disabled selected>Metric</option>
+                        <option value="Impressions">Impressions</option>
+                        <option value="Clicks (all)">Clicks (all)</option>
+                        <option value="Link clicks">Link clicks</option>
+                        <option value="Cost">Cost</option>
+                        <option value="CPC (all)">CPC (all)</option>
+                        <option value="CPC (cost per link click)">CPC (Cost Per Link Click)</option>
+                        <option value="CTR (link click-through rate)">CTR (Link Click-Through Rate)</option>
+                        <option value="Conversion value of purchase on Facebook">Conversion value of purchase on Facebook</option>
+                        <option value="Website purchases">Website purchases</option>
+                        <option value="Website purchases CVR">Website purchases CVR</option>
+                        <option value="Cost per website purchase">Cost per website purchase</option>
+                        <option value="Website Purchase ROAS">Website Purchase ROAS</option>
+                        <option value="Website adds to cart">Website adds to cart</option>
+                        <option value="Website adds to cart CVR">Website adds to cart CVR</option>
+                        <option value="Website Lead">Website Lead</option>
+                        <option value="Website Lead CVR">Website Lead CVR</option>
+                      </select>
+                    </div>
 
-                <div class="col-3" style={{"margin":"1px"}}>
-                  <select
-                    class="repeat-el no-right-border col-12" >
-                    <option value="" disabled selected>Lookback Window</option>
-                    <option value="1 Day">1 Day</option>
-                    <option value="2 Days">2 Days</option>
-                    <option value="3 Days">3 Days</option>
-                    <option value="4 Days">4 Days</option>
-                    <option value="5 Days">5 Days</option>
-                    <option value="6 Days">6 Days</option>
-                    <option value="1 Week">1 Week</option>
-                    <option value="2 Weeks">2 Weeks</option>
-                    <option value="3 Weeks">3 Weeks</option>
-                    <option value="4 Weeks">4 Weeks</option>
-                    <option value="5 Weeks">5 Weeks</option>
-                    <option value="6 Weeks">6 Weeks</option>
-                    <option value="7 Weeks">7 Weeks</option>
-                    <option value="8 Weeks">8 Weeks</option>
-                    <option value="9 Weeks">9 Weeks</option>
-                    <option value="10 Weeks">10 Weeks</option>
-                  </select>
-                </div>
+                    <div class="col-3" style={{"margin":"1px"}}>
+                      <select
+                        class="repeat-el no-right-border col-12" >
+                        <option value="" disabled selected>Lookback Window</option>
+                        <option value="1 Day">1 Day</option>
+                        <option value="2 Days">2 Days</option>
+                        <option value="3 Days">3 Days</option>
+                        <option value="4 Days">4 Days</option>
+                        <option value="5 Days">5 Days</option>
+                        <option value="6 Days">6 Days</option>
+                        <option value="1 Week">1 Week</option>
+                        <option value="2 Weeks">2 Weeks</option>
+                        <option value="3 Weeks">3 Weeks</option>
+                        <option value="4 Weeks">4 Weeks</option>
+                        <option value="5 Weeks">5 Weeks</option>
+                        <option value="6 Weeks">6 Weeks</option>
+                        <option value="7 Weeks">7 Weeks</option>
+                        <option value="8 Weeks">8 Weeks</option>
+                        <option value="9 Weeks">9 Weeks</option>
+                        <option value="10 Weeks">10 Weeks</option>
+                      </select>
+                    </div>
 
-                <div class="col-2" style={{"margin":"0px"}}>
-                  <select class="repeat-el no-side-borders col-12"
-                  >
-                    <option value="" disabled selected>Operator</option>
-                    <option value="<"> {"<"} </option>
-                    <option value="<=">{"<="}</option>
-                    <option value=">">{">"}</option>
-                    <option value=">=">{">="}</option>
-                    <option value="=">{"="}</option>
-                  </select>
-                </div>
+                    <div class="col-2" style={{"margin":"0px"}}>
+                      <select class="repeat-el no-side-borders col-12"
+                      >
+                        <option value="" disabled selected>Operator</option>
+                        <option value="<"> {"<"} </option>
+                        <option value="<=">{"<="}</option>
+                        <option value=">">{">"}</option>
+                        <option value=">=">{">="}</option>
+                        <option value="=">{"="}</option>
+                      </select>
+                    </div>
 
-                <div class="col-2" style={{"margin":"1px"}}>
-                  <input
-                    class="col-12 repeat-el "
-                    type="text"
-                    size="10"
-                    maxlength="256"
-                    style={{"font-size": "12pt"}}
-                  />
+                    <div class="col-2" style={{"margin":"1px"}}>
+                      <input
+                        class="col-12 repeat-el "
+                        type="text"
+                        size="10"
+                        maxlength="256"
+                        style={{"font-size": "12pt"}}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <div class="col-4" style={{"margin":"1px"}}>
+                      <input
+                        placeholder="Rule Name"
+                        class="col-12 repeat-el "
+                        type="text"
+                        size="10"
+                        maxlength="256"
+                        style={{"font-size": "12pt"}}
+                      />
+                    </div>
+                  </div>
+                  {
+                    this.render_second_row(data.second_row,data.id)
+                  }
                 </div>
               </div>
-              <div>
-                <div class="col-4" style={{"margin":"1px"}}>
-                  <input
-                    placeholder="Rule Name"
-                    class="col-12 repeat-el "
-                    type="text"
-                    size="10"
-                    maxlength="256"
-                    style={{"font-size": "12pt"}}
-                  />
-                </div>
-              </div>
-              {
-                this.render_second_row(data.second_row,data.id)
-              }
-            </div>
-          </div>
-
+            </div>          
+          </div>          
         )
       })
     )
   }
 
+  change = (event) =>{
+    this.setState({form_type: event.target.value});
+  }
+
+  render_container = () =>{
+    if (this.state.form_type == "Simple"){
+      return(
+        this.render_simple_container()      
+      )
+    }else{
+      return(
+        this.render_complex_container()      
+      )     
+    }
+  }
+
+  show_trigger_btn = () =>{
+    if (this.state.form_type == "Simple"){
+      return(
+        <div style={{"text-align": 'right',"marginBottom": "20px","padding-right": "30%"}} onClick={this.trigger_press}>Trigger/Action</div>         
+      )
+    }else{
+      return(
+        <div style={{"text-align": 'right',"marginBottom": "20px","padding-right": "30%"}} onClick={this.trigger_press}>Add Rule</div>         
+      )
+    }
+  }
+
+  render_complex_container = () =>{
+    return(
+      this.state.container_array.map((data)  => {
+        return(
+          <div id="base_condition_group_1" class="repeat-section flex items-center" >
+            <div class="repeat-items flex-auto">
+              <div  style={{display: "flex","padding-top": "40px"}}>
+                <div style={{display: "flex",width: "1.5%"}}>
+                </div>
+                <div style={{flex:0.9}}>
+                  <div class="repeat-item flex items-center">
+                    <div class="col-4" style={{"margin":"1px"}}>
+                      <input
+                        placeholder="Rule Name"
+                        class="col-12 repeat-el "
+                        type="text"
+                        size="10"
+                        maxlength="256"
+                        style={{"font-size": "12pt"}}
+                      />
+                    </div>
+                    <div class="col-3" style={{"margin":"1px"}}>
+                      <select
+                        class="repeat-el no-right-border col-12" >
+                        <option value="" disabled selected>Lookback Window</option>
+                        <option value="1 Day">1 Day</option>
+                        <option value="2 Days">2 Days</option>
+                        <option value="3 Days">3 Days</option>
+                        <option value="4 Days">4 Days</option>
+                        <option value="5 Days">5 Days</option>
+                        <option value="6 Days">6 Days</option>
+                        <option value="1 Week">1 Week</option>
+                        <option value="2 Weeks">2 Weeks</option>
+                        <option value="3 Weeks">3 Weeks</option>
+                        <option value="4 Weeks">4 Weeks</option>
+                        <option value="5 Weeks">5 Weeks</option>
+                        <option value="6 Weeks">6 Weeks</option>
+                        <option value="7 Weeks">7 Weeks</option>
+                        <option value="8 Weeks">8 Weeks</option>
+                        <option value="9 Weeks">9 Weeks</option>
+                        <option value="10 Weeks">10 Weeks</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="fixed-item flex items-center">
+                    <div class="col-4" style={{"margin":"0px"}}>
+                      <select class="repeat-el col-12 no-right-border" style={{background:"white"}}>
+                        <option value="Campaign Name" selected>Campaign Name</option>
+                        <option value="Ad Set Name">Ad Set Name</option>
+                        <option value="Ad Name">Ad Name</option>
+                      </select>
+                    </div>
+                    <div class="col-3" style={{"margin":"1px"}}>
+                      <select class="repeat-el no-side-borders col-12"
+                      >
+                        <option value="" disabled selected>Operator</option>
+                        <option value="equals">Equals</option>
+                        <option value="contains">Contains</option>
+                        <option value="does not contain">Does not contain</option>
+                      </select>
+                    </div>
+                    <div class="col-4" style={{"margin":"0px"}}>
+                      <input
+                        class="col-12 repeat-el "
+                        type="text"
+                        size="10"
+                        maxlength="256"
+                        style={{"font-size": "12pt"}}
+                      />
+                    </div>
+                    <div class="col4"></div>
+                  </div>
+                  {
+                    this.render_second_row(data.second_row,data.id)
+                  }
+                </div>
+              </div>
+            </div>          
+          </div>          
+        )
+      })
+    )
+  }
+    
   render(){
     return (
       <div id="page" style={{"max-width": "900px;"}}>
         <h1>Marketing Rules</h1>
         <br />
-        <div class="col-3" style={{"padding-left":"20px"}}>
-          <select class="repeat-el col-12 no-right-border" >
-            <option value="Facebook Ads" selected>Facebook Ads</option>
-            <option value="Google Ads">Google Ads</option>
-            <option value="Google Analysis">Google Analysis</option>
-          </select>
-        </div>
+        <div style={{display:"flex",flexDirection: 'row'}}>
+          <div class="col-3"  onChange={this.change} value={this.state.form_type}  style={{"padding-left":"20px"}}>
+            <select class="repeat-el col-12 no-right-border" >
+              <option value="Simple" selected>Simple</option>
+              <option value="Complex">Complex</option>
+            </select>
+          </div>
+          <div class="col-1"></div>
+          <div class="col-3" style={{"padding-left":"20px"}}>
+            <select class="repeat-el col-12 no-right-border" >
+              <option value="Facebook Ads" selected>Facebook Ads</option>
+              <option value="Google Ads">Google Ads</option>
+              <option value="Google Analysis">Google Analysis</option>
+            </select>
+          </div>
+          <div class="col-5"></div>
+        </div>  
         <br />
 
         <div class="flex">
@@ -335,15 +461,12 @@ class App extends React.Component {
         <form class="pure-form pure-form-stacked" id="rules_form">
             <div id="base" class="base repeat-section flex flex-column rounded p2" >
               <div class="repeat-items">
+                {this.show_trigger_btn()}
                 <div class="repeat-item col-12" >
-                  <div id="base_condition_group_1" class="repeat-section flex items-center" >
-                    <div class="repeat-items flex-auto">
-                      <div style={{"text-align": 'right',"marginBottom": "20px","padding-right": "30%"}} onClick={this.trigger_press}>Trigger/Action</div>
-                      {
-                        this.render_container()
-                      }  
-                    </div>
-                  </div>
+                  {
+
+                    this.render_container()
+                  }  
                 </div>
               </div>
               <input type="submit" class="col-2" value="save" id="submit_button" />
