@@ -331,7 +331,7 @@ class App extends React.Component {
       )
     }else{
       return(
-        <div style={{"text-align": 'right',"marginBottom": "20px","padding-right": "30%"}} onClick={this.trigger_press}>Add Rule</div>         
+        <div style={{"text-align": 'right',"marginBottom": "20px","padding-right": "30%"}} >Add Rule</div>         
       )
     }
   }
