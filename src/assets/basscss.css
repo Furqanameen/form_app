@@ -187,7 +187,17 @@
 .col-3{
   width: 10%;
 }
+.custom-col-3{
+  width: 25%;
+}
 
+.drop-down-width{
+  width:16.66667%;
+  background-color: white;
+}
+.dlt-fields-btn{
+  width: 1px;
+}
 .col-4{
   width:33.33333%;
 }
@@ -221,7 +231,7 @@
 }
 
 .col-12{
-  width:100%;
+  width:99.87%;
 }
 @media (min-width: 40em){
 

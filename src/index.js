@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/index.css';
-import App from './App';
+import Simple from './Simple';
 import Complex from './Complex';
 import * as serviceWorker from './serviceWorker';
 import 'font-awesome/css/font-awesome.min.css';
@@ -11,7 +11,7 @@ const routing = (
   <Router>
     <div>
       <Switch>
-        <Route exact path="/" component={App} />
+        <Route exact path="/" component={Simple} />
         <Route  path="/complex" component={Complex} />
       </Switch>
     </div>

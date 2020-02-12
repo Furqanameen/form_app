@@ -1,8 +1,6 @@
 import React from 'react';
 import './assets/App.css';
-// import './basscss.css';
 import './assets/basscss.css'
-// import './basscss.css';
 import './assets/style.css';
 
 class Complex extends React.Component {
@@ -91,8 +89,8 @@ class Complex extends React.Component {
   render_minus_icon = (second_row,container_id,row_id) =>{
     if (second_row.length > 1 && row_id != 1){
       return(
-        <div class="col-1">
-          <i style={{"marginLeft":"5px"}} className="fa fa-minus-circle" onClick={(e) => this.remove_row_press(row_id,container_id)}></i>
+        <div class="dlt-fields-btn">
+          <i style={{"marginLeft":"10px"}} className="fa fa-minus-circle" onClick={(e) => this.remove_row_press(row_id,container_id)}></i>
         </div>
       )
     }
@@ -113,6 +111,7 @@ class Complex extends React.Component {
 
   submit_form = () =>{
     try{
+      alert("Add url here   https://localhost:3000/filter")
       fetch("https://localhost:3000/filter", {
         method: 'POST',
         mode: 'same-origin',
@@ -160,7 +159,7 @@ class Complex extends React.Component {
                         <option value="Website Lead CVR">Website Lead CVR</option>
                       </select>
                     </div>
-                    <div class="col-2" style={{"margin":"1px"}}>
+                    <div class="col-4" style={{"margin":"1px"}}>
                       <select class="repeat-el no-side-borders col-12" onChange={(e) => this.change_second_object(e,container_id,data.id,"operator")} value={data.operator}>
                         <option value="" disabled selected>Operator</option>
                         <option value="<"> {"<"} </option>
@@ -171,7 +170,7 @@ class Complex extends React.Component {
                       </select>
                     </div>
 
-                    <div class="col-4" style={{"margin":"2px"}}>
+                    <div class="col-4" style={{"margin":"2px", "margin-right": "4px"}}>
                       <input
                         class="col-12 repeat-el "
                         type="text"
@@ -197,7 +196,7 @@ class Complex extends React.Component {
         return(
           <div id="base_condition_group_1" class="repeat-section flex items-center" >
             <div class="repeat-items flex-auto">
-              <div  style={{display: "flex","padding-top": "40px"}}>
+              <div  style={{display: "flex","padding-top": "0px", border: '1px solid #fff'}}>
                 <div style={{display: "flex",width: "1.5%",background:"#1b95e0","margin-right": "6px",flexDirection: "column"}}>
                   <div style={{display:"flex",height: "70%",alignItems:'flex-end',justifyContent: 'center'}}>
                     <h6 style={{color: "white",transform: "rotate(270deg)"}} onClick={(e) => this.press_blue_btn(data.id,data.status)}>{data.status}</h6>
@@ -206,9 +205,9 @@ class Complex extends React.Component {
                     <i className="fa fa-plus-circle" style={{color: "white"}} onClick={(e) => this.add_row_press(data.id)}></i>
                   </div>
                 </div>
-                <div style={{flex:0.9}}>
+                <div style={{flex:1}}>
                   <div class="repeat-item flex items-center">
-                    <div class="col-4" style={{"margin":"1px"}}>
+                    <div class="col-6" style={{"margin":"1px"}}>
                       <input
                         placeholder="Rule Name"
                         class="col-12 repeat-el "
@@ -220,7 +219,7 @@ class Complex extends React.Component {
                         style={{"font-size": "12pt"}}
                       />
                     </div>
-                    <div class="col-4" style={{"margin":"1px"}}>
+                    <div class="col-6" style={{"margin":"1px", padding: "1px"}}>
                       <select
                         class="repeat-el no-right-border col-12" onChange={(e) => this.change_object(e,data.id,"lb_window")} value={data.lb_window}>
                         <option value="" disabled selected>LB Window</option>
@@ -251,7 +250,7 @@ class Complex extends React.Component {
                         <option value="Ad Name">Ad Name</option>
                       </select>
                     </div>
-                    <div class="col-3" style={{"margin":"1px"}}>
+                    <div class="col-4" style={{"margin":"1px"}}>
                       <select class="repeat-el no-side-borders col-12" onChange={(e) => this.change_object(e,data.id,"operator")} value={data.operator}>
                         <option value="" disabled selected>Operator</option>
                         <option value="equals">Equals</option>
@@ -259,7 +258,7 @@ class Complex extends React.Component {
                         <option value="does not contain">Does not contain</option>
                       </select>
                     </div>
-                    <div class="col-4" style={{"margin":"0px"}}>
+                    <div class="col-4" style={{"margin":"0px","margin-right": "4px"}}>
                       <input
                         class="col-12 repeat-el "
                         type="text"
@@ -270,7 +269,6 @@ class Complex extends React.Component {
                         style={{"font-size": "12pt"}}
                       />
                     </div>
-                    <div class="col4"></div>
                   </div>
                   {
                     this.render_second_row(data.second_row,data.id)
@@ -299,7 +297,7 @@ class Complex extends React.Component {
   show_trigger_btn = () =>{
     if (this.state.form_type == "Complex"){
       return(
-        <div style={{"text-align": 'right',"marginBottom": "20px","padding-right": "30%"}} onClick={this.trigger_press}>New Rule</div>         
+        <div class="rule-set" onClick={this.trigger_press}>New Rule</div>         
       )
     }
   }
@@ -310,14 +308,13 @@ class Complex extends React.Component {
         <br />
         <div style={{display:"flex",flexDirection: 'row'}}>
           <div class="col-3"  style={{"padding-left":"20px"}}>
-            <select class="repeat-el col-12 no-right-border" onChange={this.change} value={this.state.form_type}>
+            <select class="repeat-el col-8 no-right-border" onChange={this.change} value={this.state.form_type}>
               <option value="Simple" selected>Simple</option>
               <option value="Complex">Complex</option>
             </select>
           </div>
-          <div class="col-1"></div>
-          <div class="col-3" style={{"padding-left":"20px"}}>
-            <select class="repeat-el col-12 no-right-border" >
+          <div class="col-2" style={{"padding-left":"20px"}}>
+            <select class="repeat-el col-6 no-right-border" >
               <option value="Facebook Ads" selected>Facebook Ads</option>
               <option value="Google Ads">Google Ads</option>
               <option value="Google Analysis">Google Analysis</option>
@@ -351,7 +348,7 @@ class Complex extends React.Component {
                   }  
                 </div>
               </div>
-              <input type="button" onClick ={this.submit_form} class="col-2" value="Submit" id="submit_button" />
+              <input type="button" onClick ={this.submit_form} class="submit-btn" value="Submit" id="submit_button" />
             </div>
         </form>
       </div>
