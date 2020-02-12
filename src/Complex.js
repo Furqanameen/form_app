@@ -5,13 +5,13 @@ import './assets/basscss.css'
 // import './basscss.css';
 import './assets/style.css';
 
-class App extends React.Component {
+class Complex extends React.Component {
   
   constructor(props) {
     super(props);
     this.state = {
       playText: "Play",
-      form_type: "Simple",
+      form_type: "Complex",
       playIcon: true,
       container_array:  [
                           {
@@ -20,7 +20,8 @@ class App extends React.Component {
                             compaign_name: "",
                             operator: '',
                             field: "",
-                            second_row:[{id: 1,matric:"",operator: "", field: "", lb_window: ""}],
+                            lb_window: "",
+                            second_row:[{id: 1,matric:"",operator: "", field: ""}],
                             rule_name:'',
                           }
                         ],
@@ -181,9 +182,47 @@ class App extends React.Component {
                         style={{"font-size": "12pt"}}
                       />
                     </div>
-                    <div class="col-3" style={{"margin":"1px"}}>
+                    
+                    { this.render_minus_icon(second_row,container_id,data.id)}
+              </div>
+            )        
+          })
+        )
+      }
+  }
+
+  render_complex_container = () =>{
+    return(
+      this.state.container_array.map((data)  => {
+        return(
+          <div id="base_condition_group_1" class="repeat-section flex items-center" >
+            <div class="repeat-items flex-auto">
+              <div  style={{display: "flex","padding-top": "40px"}}>
+                <div style={{display: "flex",width: "1.5%",background:"#1b95e0","margin-right": "6px",flexDirection: "column"}}>
+                  <div style={{display:"flex",height: "70%",alignItems:'flex-end',justifyContent: 'center'}}>
+                    <h6 style={{color: "white",transform: "rotate(270deg)"}} onClick={(e) => this.press_blue_btn(data.id,data.status)}>{data.status}</h6>
+                  </div>
+                  <div style={{display:"flex",height: "30%",alignItems:'flex-end',justifyContent: 'center'}}>
+                    <i className="fa fa-plus-circle" style={{color: "white"}} onClick={(e) => this.add_row_press(data.id)}></i>
+                  </div>
+                </div>
+                <div style={{flex:0.9}}>
+                  <div class="repeat-item flex items-center">
+                    <div class="col-4" style={{"margin":"1px"}}>
+                      <input
+                        placeholder="Rule Name"
+                        class="col-12 repeat-el "
+                        type="text"
+                        onChange={(e) => this.change_object(e,data.id,"rule_name")}
+                        value={data.rule_name}
+                        size="10"
+                        maxlength="256"
+                        style={{"font-size": "12pt"}}
+                      />
+                    </div>
+                    <div class="col-4" style={{"margin":"1px"}}>
                       <select
-                        class="repeat-el no-right-border col-12" onChange={(e) => this.change_second_object(e,container_id,data.id,"lb_window")} value={data.lb_window}>
+                        class="repeat-el no-right-border col-12" onChange={(e) => this.change_object(e,data.id,"lb_window")} value={data.lb_window}>
                         <option value="" disabled selected>LB Window</option>
                         <option value="1 Day">1 Day</option>
                         <option value="2 Days">2 Days</option>
@@ -202,43 +241,6 @@ class App extends React.Component {
                         <option value="9 Weeks">9 Weeks</option>
                         <option value="10 Weeks">10 Weeks</option>
                       </select>
-                    </div>
-                    { this.render_minus_icon(second_row,container_id,data.id)}
-              </div>
-            )        
-          })
-        )
-      }
-  }
-
-  render_simple_container = () =>{
-    return(
-      this.state.container_array.map((data)  => {
-        return(
-          <div id="base_condition_group_1" class="repeat-section flex items-center" >
-            <div class="repeat-items flex-auto">
-              <div  style={{display: "flex","padding-top": "40px"}}>
-                <div style={{display: "flex",width: "1.5%",background:"#1b95e0","margin-right": "6px",flexDirection: "column"}}>
-                  <div style={{display:"flex",height: "70%",alignItems:'flex-end',justifyContent: 'center'}}>
-                    <h6 style={{color: "white",transform: "rotate(270deg)"}} onClick={(e) => this.press_blue_btn(data.id,data.status)}>{data.status}</h6>
-                  </div>
-                  <div style={{display:"flex",height: "30%",alignItems:'flex-end',justifyContent: 'center'}}>
-                    <i className="fa fa-plus-circle" style={{color: "white"}} onClick={(e) => this.add_row_press(data.id)}></i>
-                  </div>
-                </div>
-                <div style={{flex:0.9}}>
-                  <div>
-                    <div class="col-4" style={{"margin":"1px"}}>
-                      <input
-                        placeholder="Rule Name"
-                        class="col-12 repeat-el "
-                        type="text"
-                        onChange={(e) => this.change_object(e,data.id,"rule_name")}
-                        value={data.rule_name}
-                        size="10"
-                        maxlength="256"
-                        style={{"font-size": "12pt"}}
-                      />
                     </div>
                   </div>
                   <div class="fixed-item flex items-center">
@@ -283,19 +285,19 @@ class App extends React.Component {
   }
 
   change = (event) =>{
-    window.location.href = "/complex"
+    window.location.href = "/";
   }
 
   render_container = () =>{
-    if (this.state.form_type == "Simple"){
+    if (this.state.form_type == "Complex"){
       return(
-        this.render_simple_container()      
+        this.render_complex_container()      
       )
     }
   }
 
   show_trigger_btn = () =>{
-    if (this.state.form_type == "Simple"){
+    if (this.state.form_type == "Complex"){
       return(
         <div style={{"text-align": 'right',"marginBottom": "20px","padding-right": "30%"}} onClick={this.trigger_press}>New Rule</div>         
       )
@@ -359,4 +361,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Complex;
