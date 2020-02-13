@@ -87,6 +87,14 @@ class Simple extends React.Component {
     
   }
 
+  delete_container = (container_id) =>{
+    var temp_array = this.state.container_array
+    temp_array = temp_array.filter(function(row) { 
+                                              return row.id !== container_id 
+                                            });
+    this.setState({container_array: temp_array})
+  }
+
   render_minus_icon = (second_row,container_id,row_id) =>{
     if (second_row.length > 1 && row_id != 1){
       return(
@@ -212,6 +220,16 @@ class Simple extends React.Component {
       }
   }
 
+  render_delete_button = (data) =>{
+    if (this.state.container_array.length > 1 && data.id != 1){
+      return(
+        <div style={{display:"flex",alignItems:"flex-end",justifyContent:'flex-end'}}>
+          <input type="button" onClick={(e) => this.delete_container(data.id)} class="submit-btn" value="Delete" id="submit_button" />
+        </div>
+      )
+    }
+  }
+
   render_simple_container = () =>{
     return(
       this.state.container_array.map((data)  => {
@@ -275,6 +293,7 @@ class Simple extends React.Component {
                   }
                 </div>
               </div>
+              { this.render_delete_button(data)}
             </div>          
           </div>          
         )
@@ -301,6 +320,15 @@ class Simple extends React.Component {
         <div class="rule-set" onClick={this.trigger_press}>
           New Rule
         </div>         
+      )
+    }
+  }
+
+  render_submit_button = () =>{
+    if (this.state.container_array.length > 0){
+      return (
+        <input type="button" onClick ={this.submit_form} class="submit-btn" value="Submit" id="submit_button" />
+
       )
     }
   }
@@ -343,7 +371,7 @@ class Simple extends React.Component {
         <br />
         <form class="pure-form pure-form-stacked" id="rules_form">
             <div id="base" class="base repeat-section flex flex-column rounded p2" >
-              <div class="repeat-items">
+              <div class="repeat-items" style={{margin: "10px"}}>
                 {this.show_trigger_btn()}
                 <div class="repeat-item col-12" >
                   {
@@ -351,7 +379,9 @@ class Simple extends React.Component {
                   }  
                 </div>
               </div>
-              <input type="button" onClick ={this.submit_form} class="submit-btn" value="Submit" id="submit_button" />
+              {
+                this.render_submit_button()
+              }
             </div>
         </form>
       </div>

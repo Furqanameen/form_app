@@ -109,6 +109,14 @@ class Complex extends React.Component {
     console.log(this.state.container_array)
   }
 
+  delete_container = (container_id) =>{
+    var temp_array = this.state.container_array
+    temp_array = temp_array.filter(function(row) { 
+                                              return row.id !== container_id 
+                                            });
+    this.setState({container_array: temp_array})
+  }
+
   submit_form = () =>{
     try{
       alert("Add url here   https://localhost:3000/filter")
@@ -159,7 +167,7 @@ class Complex extends React.Component {
                         <option value="Website Lead CVR">Website Lead CVR</option>
                       </select>
                     </div>
-                    <div class="col-4" style={{"margin":"1px"}}>
+                    <div class="col-3" style={{"margin":"1px","margin-left": "8px"}}>
                       <select class="repeat-el no-side-borders col-12" onChange={(e) => this.change_second_object(e,container_id,data.id,"operator")} value={data.operator}>
                         <option value="" disabled selected>Operator</option>
                         <option value="<"> {"<"} </option>
@@ -180,8 +188,30 @@ class Complex extends React.Component {
                         maxlength="256"
                         style={{"font-size": "12pt"}}
                       />
+
                     </div>
-                    
+                    <div class="col-4" style={{"margin":"1px", padding: "1px"}}>
+                      <select
+                        class="repeat-el no-right-border col-12" onChange={(e) => this.change_object(e,container_id,data.id,"lb_window")} value={data.lb_window}>
+                        <option value="" disabled selected>LB Window</option>
+                        <option value="1 Day">1 Day</option>
+                        <option value="2 Days">2 Days</option>
+                        <option value="3 Days">3 Days</option>
+                        <option value="4 Days">4 Days</option>
+                        <option value="5 Days">5 Days</option>
+                        <option value="6 Days">6 Days</option>
+                        <option value="1 Week">1 Week</option>
+                        <option value="2 Weeks">2 Weeks</option>
+                        <option value="3 Weeks">3 Weeks</option>
+                        <option value="4 Weeks">4 Weeks</option>
+                        <option value="5 Weeks">5 Weeks</option>
+                        <option value="6 Weeks">6 Weeks</option>
+                        <option value="7 Weeks">7 Weeks</option>
+                        <option value="8 Weeks">8 Weeks</option>
+                        <option value="9 Weeks">9 Weeks</option>
+                        <option value="10 Weeks">10 Weeks</option>
+                      </select>
+                    </div>
                     { this.render_minus_icon(second_row,container_id,data.id)}
               </div>
             )        
@@ -207,7 +237,7 @@ class Complex extends React.Component {
                 </div>
                 <div style={{flex:1}}>
                   <div class="repeat-item flex items-center">
-                    <div class="col-6" style={{"margin":"1px"}}>
+                    <div class="col-12" style={{"margin":"0px","margin-right": "1px"}}>
                       <input
                         placeholder="Rule Name"
                         class="col-12 repeat-el "
@@ -218,28 +248,6 @@ class Complex extends React.Component {
                         maxlength="256"
                         style={{"font-size": "12pt"}}
                       />
-                    </div>
-                    <div class="col-6" style={{"margin":"1px", padding: "1px"}}>
-                      <select
-                        class="repeat-el no-right-border col-12" onChange={(e) => this.change_object(e,data.id,"lb_window")} value={data.lb_window}>
-                        <option value="" disabled selected>LB Window</option>
-                        <option value="1 Day">1 Day</option>
-                        <option value="2 Days">2 Days</option>
-                        <option value="3 Days">3 Days</option>
-                        <option value="4 Days">4 Days</option>
-                        <option value="5 Days">5 Days</option>
-                        <option value="6 Days">6 Days</option>
-                        <option value="1 Week">1 Week</option>
-                        <option value="2 Weeks">2 Weeks</option>
-                        <option value="3 Weeks">3 Weeks</option>
-                        <option value="4 Weeks">4 Weeks</option>
-                        <option value="5 Weeks">5 Weeks</option>
-                        <option value="6 Weeks">6 Weeks</option>
-                        <option value="7 Weeks">7 Weeks</option>
-                        <option value="8 Weeks">8 Weeks</option>
-                        <option value="9 Weeks">9 Weeks</option>
-                        <option value="10 Weeks">10 Weeks</option>
-                      </select>
                     </div>
                   </div>
                   <div class="fixed-item flex items-center">
@@ -275,6 +283,9 @@ class Complex extends React.Component {
                   }
                 </div>
               </div>
+              <div style={{display:"flex",alignItems:"flex-end",justifyContent:'flex-end'}}>
+                <input type="button" onClick={(e) => this.delete_container(data.id)} class="submit-btn" value="Delete" id="submit_button" />
+              </div>
             </div>          
           </div>          
         )
@@ -298,6 +309,14 @@ class Complex extends React.Component {
     if (this.state.form_type == "Complex"){
       return(
         <div class="rule-set" onClick={this.trigger_press}>New Rule</div>         
+      )
+    }
+  }
+
+  render_submit_button = () =>{
+    if (this.state.container_array.length > 0){
+      return (
+        <input type="button" onClick ={this.submit_form} class="submit-btn" value="Submit" id="submit_button" />
       )
     }
   }
@@ -340,7 +359,7 @@ class Complex extends React.Component {
         <br />
         <form class="pure-form pure-form-stacked" id="rules_form">
             <div id="base" class="base repeat-section flex flex-column rounded p2" >
-              <div class="repeat-items">
+              <div class="repeat-items" style={{margin: "10px"}}>
                 {this.show_trigger_btn()}
                 <div class="repeat-item col-12" >
                   {
@@ -348,7 +367,9 @@ class Complex extends React.Component {
                   }  
                 </div>
               </div>
-              <input type="button" onClick ={this.submit_form} class="submit-btn" value="Submit" id="submit_button" />
+              {
+                this.render_submit_button()
+              }
             </div>
         </form>
       </div>
